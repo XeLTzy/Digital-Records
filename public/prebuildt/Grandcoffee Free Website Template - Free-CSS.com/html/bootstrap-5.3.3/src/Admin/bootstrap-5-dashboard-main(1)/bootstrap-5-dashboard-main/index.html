@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidebar With Bootstrap</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Boostrap icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Font awesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link href='https://unpkg.com/css.gg@2.0.0/icons/css/add-r.css' rel='stylesheet'>
+
+    <!-- Boostrap 5 -->
+    <link href="C:\Users\Anonymous Family\Downloads\bootstrap-5.3.3\dist\css\bootstrap.min.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script>
+
+</head>
+
+<body>
+    <div class="wrapper">
+
+        <aside id="sidebar" class="d-none d-xl-block">
+            <div class="d-flex align-items-center gap-3">
+
+                <button id="sidebarbtn" class="toggle-btn mt-1" type="button">
+                    <i class="bi bi-list" style="color: white;"></i>
+                </button>
+
+                <div class="sidebar-logo img-fluid">
+                    <img src="assets/images/Icons/logo-v5.png" alt="icons"
+                        style=" height: 45px; max-height: 45px; max-width: 100%; margin-top: 13px;">
+                </div>
+            </div>
+
+
+            <!-- Sidebar for extra Large Screen -->
+            <ul class="sidebar-nav">
+                <li class="sidebar-item mx-auto active">
+                    <a href="#" class="sidebar-link DesktopSidebarButton active" data-bs-toggle="tooltip"
+                        data-bs-placement="right" data-bs-title="Dashboard" data-section="dashboard">
+                        <i class="fa-solid fa-house-medical fa-lg"></i>
+                        <span class="ms-4">Dashboard</span>
+                    </a>
+                </li>
+                <li class="sidebar-item mx-auto">
+                    <a href="#" class="sidebar-link DesktopSidebarButton" data-bs-toggle="tooltip"
+                        data-bs-placement="right" data-bs-title="Patient" data-section="patient">
+                        <i class="fa-solid fa-hospital-user fa-lg"></i>
+                        <span class="ms-4">Patient</span>
+                    </a>
+                </li>
+                <li class="sidebar-item mx-auto">
+                    <a href="#" class="sidebar-link DesktopSidebarButton" data-bs-toggle="tooltip"
+                        data-bs-placement="right" data-bs-title="Services" data-section="services">
+                        <i class="fa-solid fa-notes-medical fa-lg"></i>
+                        <span class="ms-4">Services</span>
+                    </a>
+                </li>
+                <li class="sidebar-item mx-auto">
+                    <a href="#" class="sidebar-link DesktopSidebarButton" data-bs-toggle="tooltip"
+                        data-bs-placement="right" data-bs-title="Invoices" data-section="invoices">
+                        <i class="fa-solid fa-receipt fa-2xl" id="invoicesID"></i>
+                        <span id="Sidebarinvoices" style="margin-left: 28px;">Invoices</span>
+                    </a>
+                </li>
+                <li class="sidebar-item mx-auto">
+                    <a href="#" class="sidebar-link DesktopSidebarButton" data-bs-toggle="tooltip"
+                        data-bs-placement="right" data-bs-title="Schedule" data-section="schedule">
+                        <i class="fa-solid fa-list-check"></i>
+                        <span class="ms-4">Schedule</span>
+                    </a>
+                </li>
+                <li class="sidebar-item mx-auto">
+                    <a href="#" class="sidebar-link DesktopSidebarButton" data-bs-toggle="tooltip"
+                        data-bs-placement="right" data-bs-title="Report" data-section="report">
+                        <i class="fa-regular fa-file-lines fa-2xl"></i>
+                        <span id="LarlgeSreemSidebarReport" style="margin-left: 28px;">Report</span>
+                    </a>
+                </li>
+            </ul>
+
+        </aside>
+
+        <div class="main">
+            <!-- px-4 py-3 -->
+            <nav class="navbar navbar-expand p-3 d-flex align-items-md-center justify-content-md-between">
+
+                <div class="d-flex align-items-center">
+                    <button type="button" class="btn d-block d-xl-none" data-bs-toggle="offcanvas"
+                        data-bs-target="#MobileSidebarMenu" aria-expanded="false" aria-controls="MobileSidebarMenu"
+                        style="color: white; padding: 0;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                            class="bi bi-list" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="flex-grow-1 text-white text-center">
+                    <!-- d-block d-xl-none d:xl- -->
+                    <span class="h5 m-0 " id="SmallAndMediumScreenTooltips">Dashboard</span>
+                </div>
+
+                <!-- User Profile -->
+                <div class="p-1">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item dropdown">
+                            <a href="#" data-bs-toggle="dropdown"
+                                class="nav-icon pe-md-0 py-3 d-flex align-items-center" style="text-decoration: none;">
+                                <i class="fa-regular fa-circle-user fa-xl img-fluid" style="color: white; text-decoration: none;"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end collapse text-center p-2 me-4"
+                                id="Userprofiledropdown">
+                                <li><a class="dropdown-item" href="#" id="UserSettings" data-bs-toggle="modal"
+                                        data-bs-target="#UserSettingsModal">Settings</a></li>
+                                <li><a class="dropdown-item" href="#" id="UserLogout">Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!-- <form action="#" class="d-none d-sm-inline-block ms-auto">
+                   
+                </form> -->
+                <!-- User profile -->
+            </nav>
+
+            <main class="content py-3">
+                <div class="container-fluid">
+
+                    <div id="dashboard" class="container-fluid content-section">
+                        <!-- <div class="container-fluid">
+                            <div id='calendar'></div>
+                        </div> -->
+                          
+                        <div id='calendar'>
+
+                        </div>
+                    </div>
+
+                    <!-- Patient Section -->
+                    <div id="patient" class="content-section d-none">
+                        <h3 class="fw-bold fs-4 mb-3">Patient</h3>
+                        <!-- Add your patient content here -->
+                    </div>
+
+                    <!-- Services Section -->
+                    <div id="services" class="content-section d-none">
+                        <h3 class="fw-bold fs-4 mb-3">Services</h3>
+                        <!-- Add your services content here -->
+                    </div>
+
+                    <!-- Invoices Section -->
+                    <div id="invoices" class="content-section d-none">
+                        <h3 class="fw-bold fs-4 mb-3">Invoices</h3>
+                        <!-- Add your invoices content here -->
+                    </div>
+
+                    <!-- Schedule Section -->
+                    <div id="schedule" class="content-section d-none">
+                        <h3 class="fw-bold fs-4 mb-3">Schedule</h3>
+                        <!-- Add your schedule content here -->
+                    </div>
+
+                    <!-- Report Section -->
+                    <div id="report" class="content-section d-none">
+                        <h3 class="fw-bold fs-4 mb-3">Report</h3>
+                        <!-- Add your report content here -->
+                    </div>
+
+                </div>
+            </main>
+
+        </div>
+    </div>
+
+    <!-- Sidebar for small, medium and large screen -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="MobileSidebarMenu" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title text-light" id="offcanvasNavbarLabel">Dentista Royale Dental Works</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="d-grid gap-2">
+                <button class="MobileSidebarButton btn text-light d-flex align-items-center active"
+                    data-section="dashboard" type="button">
+                    <i class="fa-solid fa-house-medical fa-lg"></i>
+                    <span class="mx-auto">Dashboard</span>
+                </button>
+                <button class="MobileSidebarButton btn text-light d-flex align-items-center" data-section="patient"
+                    type="button">
+                    <i class="fa-solid fa-hospital-user fa-lg" id="mobilepatient"></i>
+                    <span class="mx-auto">Patient</span>
+                </button>
+                <button class="MobileSidebarButton btn text-light d-flex align-items-center" data-section="services"
+                    type="button">
+                    <i class="fa-solid fa-notes-medical fa-lg"></i>
+                    <span class="mx-auto">Services</span>
+                </button>
+                <button class="MobileSidebarButton btn text-light d-flex align-items-center" data-section="invoices"
+                    type="button">
+                    <i class="fa-solid fa-receipt fa-xl" id="invoicesID"></i>
+                    <span id="Sidebarinvoices" class="mx-auto">Invoices</span>
+                </button>
+                <button class="MobileSidebarButton btn text-light d-flex align-items-center" data-section="schedule"
+                    type="button">
+                    <i class="fa-solid fa-list-check fa-lg"></i>
+                    <span class="mx-auto">Schedule</span>
+                </button>
+                <button class="MobileSidebarButton btn text-light d-flex align-items-center" data-section="report"
+                    type="button">
+                    <i class="fa-regular fa-file-lines fa-xl"></i>
+                    <span class="mx-auto">Report</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard date picker Modal -->
+    <div class="modal" id="DashboardDatePicker">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Select date</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <input type="date" class="form-control" id="modalDateInput">
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                        id="applyDateButton">Apply</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Sidebarhighlights for active and inactive & Hidetooltips-->
+    <script>
+        document.querySelectorAll('.DesktopSidebarButton, .MobileSidebarButton').forEach(button => {
+            button.addEventListener('click', function (event) {
+                event.preventDefault();
+
+                // Remove active class from all buttons in both sidebars
+                document.querySelectorAll('.DesktopSidebarButton, .MobileSidebarButton').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+
+                // Add active class to the clicked button and the corresponding button in the other sidebar
+                const section = this.getAttribute('data-section');
+
+                document.querySelectorAll(`.DesktopSidebarButton[data-section="${section}"], .MobileSidebarButton[data-section="${section}"]`).forEach(btn => {
+                    btn.classList.add('active');
+                });
+
+                // Hide all content sections
+                document.querySelectorAll('.content-section').forEach(section => {
+                    section.classList.add('d-none');
+                });
+
+                // Show the selected content section
+                document.getElementById(section).classList.remove('d-none');
+
+                // Update the span with the active section name
+                const capitalizedSection = section.charAt(0).toUpperCase() + section.slice(1);
+                document.getElementById('SmallAndMediumScreenTooltips').textContent = capitalizedSection;
+            });
+        });
+
+        const sidebar = document.getElementById('sidebar');
+        const sidebarBtn = document.getElementById('sidebarbtn');
+        let isSidebarExpanded = true;
+
+        sidebarBtn.addEventListener('click', function () {
+            isSidebarExpanded = !isSidebarExpanded;
+
+            // Toggle the sidebar's width class (you can adjust this part based on your CSS)
+            sidebar.classList.toggle('collapsed'); // Example class for toggling
+
+            // Show or hide tooltips based on sidebar state
+            if (isSidebarExpanded) {
+                showTooltips();
+            } else {
+                hideTooltips();
+            }
+        });
+
+        function hideTooltips() {
+            const tooltipElements = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+            tooltipElements.forEach(el => {
+                const tooltipInstance = bootstrap.Tooltip.getInstance(el);
+                if (tooltipInstance) {
+                    tooltipInstance.hide();
+                    tooltipInstance.disable();
+                }
+            });
+        }
+
+        function showTooltips() {
+            const tooltipElements = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+            tooltipElements.forEach(el => {
+                const tooltipInstance = bootstrap.Tooltip.getInstance(el);
+                if (tooltipInstance) {
+                    tooltipInstance.enable();
+                } else {
+                    new bootstrap.Tooltip(el);
+                }
+            });
+        }
+
+    </script>
+
+    <!-- Tooltips -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl)
+            })
+        });
+    </script>
+
+    <script src="script.js"></script>
+    <script src="assets/js/calendar/calendar.js"></script>
+
+    <script src="C:\Users\Anonymous Family\Downloads\bootstrap-5.3.3\dist\js\bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+            <!-- Orig Sidebar for Large Screen -->
+            <!-- <ul class="sidebar-nav">
+                <li class="sidebar-item active">
+                    <a href="#" class="sidebar-link DesktopSidebarButton active" data-bs-toggle="tooltip"
+                        data-bs-placement="right" data-bs-title="Dashboard">
+                        <i class="fa-solid fa-house-medical fa-lg"></i>
+                        <span class="ms-4">Dashboard</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link DesktopSidebarButton" data-bs-toggle="tooltip"
+                        data-bs-placement="right" data-bs-title="Patient">
+                        <i class="fa-solid fa-hospital-user fa-lg" id="mobilepatient"></i>
+                        <span class="ms-4">Patient</span>
+                    </a>
+                </li>
+                <li class="sidebar-item ">
+                    <a href="#" class="sidebar-link DesktopSidebarButton" data-bs-toggle="tooltip"
+                        data-bs-placement="right" data-bs-title="Services">
+                        <i class="fa-solid fa-notes-medical fa-lg"></i>
+                        <span class="ms-4">Services</span>
+                    </a>
+                </li>
+                <li class="sidebar-item mx-auto">
+                    <a href="#" class="sidebar-link DesktopSidebarButton" data-bs-toggle="tooltip"
+                        data-bs-placement="right" data-bs-title="Invoices">
+                        <i class="fa-solid fa-receipt fa-2xl" id="invoicesID"></i>
+                        <span id="Sidebarinvoices" style="margin-left: 28px;">Invoices</span>
+                    </a>
+                </li>
+                <li class="sidebar-item mx-auto">
+                    <a href="#" class="sidebar-link DesktopSidebarButton" data-bs-toggle="tooltip"
+                        data-bs-placement="right" data-bs-title="Schedule">
+                        <i class="fa-solid fa-list-check"></i>
+                        <span style="margin-left: 22px;">Schedule</span>
+                    </a>
+                </li>
+                <li class="sidebar-item mx-auto">
+                    <a href="#" class="sidebar-link DesktopSidebarButton" data-bs-toggle="tooltip"
+                        data-bs-placement="right" data-bs-custom-class="custom-tooltip" data-bs-title="Report">
+                        <i class="fa-regular fa-file-lines fa-2xl" id="DesktopReportIcons"></i>
+                        <span id="sidebarReport" style="margin-left: 25px;">Report</span>
+                    </a>
+                </li>
+            </ul> -->
+
+
+    <!-- orig Sidebar for small and medium -->
+    <!-- <div class="offcanvas offcanvas-start d-md-none" tabindex="-1" id="MobileSidebarMenu"
+        aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title text-light" id="offcanvasNavbarLabel">Dentista Royale Dental Works</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="d-grid gap-2">
+                <button class="MobileSidebarButton btn text-light d-flex align-items-center active" type="button">
+                    <i class="fa-solid fa-house-medical fa-lg"></i>
+                    <span class="mx-auto">Dashboard</span>
+                </button>
+                <button class="MobileSidebarButton btn text-light d-flex align-items-center" type="button">
+                    <i class="fa-solid fa-hospital-user fa-lg" id="mobilepatient"></i>
+                    <span class="mx-auto">Patient</span>
+                </button>
+                <button class="MobileSidebarButton btn text-light d-flex align-items-center" type="button">
+                    <i class="fa-solid fa-notes-medical fa-lg"></i>
+                    <span class="mx-auto">Services</span>
+                </button>
+                <button class="MobileSidebarButton btn text-light d-flex align-items-center" type="button">
+                    <i class="fa-solid fa-receipt fa-xl" id="invoicesID"></i>
+                    <span id="Sidebarinvoices" class="mx-auto">Invoices</span>
+                </button>
+                <button class="MobileSidebarButton btn text-light d-flex align-items-center" type="button">
+                    <i class="fa-solid fa-list-check fa-lg"></i>
+                    <span class="mx-auto">Schedule</span>
+                </button>
+                <button class="MobileSidebarButton btn text-light d-flex align-items-center" type="button">
+                    <i class="fa-regular fa-file-lines fa-xl"></i>
+                    <span class="mx-auto">Report</span>
+                </button>
+            </div>
+        </div>
+    </div> -->

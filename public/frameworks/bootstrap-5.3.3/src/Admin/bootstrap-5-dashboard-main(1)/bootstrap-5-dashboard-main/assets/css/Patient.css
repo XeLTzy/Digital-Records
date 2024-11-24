@@ -1,0 +1,102 @@
+#DashboardDatePicker {
+    min-height: 500px;
+    height: 100%;
+}
+
+.fc-toolbar-title {
+    flex: 1;
+    /* Take up remaining space */
+    text-align: center;
+    /* Center align the text */
+}
+
+.fc .fc-daygrid-day-number,
+.fc .fc-col-header-cell-cushion,
+.fc .fc-daygrid-event,
+.fc .fc-daygrid-event-dot,
+.fc-list-day-text,
+.fc-toolbar-title {
+    color: black;
+}
+
+.fc .fc-daygrid-day-number:hover,
+.fc .fc-icon:hover,
+.fc .fc-button-primary:hover,
+.fc-timeGridWeek-view .fc-col-header-cell-cushion:hover,
+.fc-list-day-text:hover {
+    color: #19B3D3;
+}
+
+.btn:hover {
+    color: #19B3D3;
+    background-color: #1e2b37;
+}
+
+.fc .fc-col-header-cell-cushion,
+.modal-title,
+.fc-toolbar-title {
+    cursor: default;
+}
+
+.fc .fc-toolbar-chunk {
+    display: flex;
+    /* Use flexbox for the toolbar */
+    align-items: flex-start;
+    /* Align items to the top */
+}
+
+.btn {
+    background-color: #2c3e50;
+}
+
+/* Patient module style */
+.formSearch {
+    position: relative;
+}
+
+.iconSearch {
+    position: absolute;
+    top: calc(25%);
+    left: 1.3rem;
+}
+
+.formSearch #Searchbar {
+    left: 1.5rem;
+    padding-left: 2.5rem;
+}
+
+.context-menu {
+    display: none;
+    position: absolute;
+    background: white;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.context-menu li {
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.context-menu li:hover {
+    background-color: #f0f0f0;
+}
+
+#totalpatients {
+    float: left;
+    top: -120px;
+}
+
+#buttonAdd {
+    margin-left: 10px;
+    background: #2c3e50;
+    border-radius: 10px;
+}
+
+#buttonAdd:hover {
+    background-color: #1a252f;
+  }
