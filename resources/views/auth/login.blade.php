@@ -45,6 +45,13 @@
                 <div class="p-2 w-25 d-flex justify-content-end mx-auto">
                     <p><a class="link-opacity-100" href="{{ route('password.request') }}">Forgot passowrd?</a></p>
                 </div>
+                <div>
+                    <p class="text-center w-100">
+                            Don't have an account yet? 
+                        <a href="{{ route('register') }}" class="text-primary">Sign up</a>
+                    </p>
+                </div>
+
             </form>
 
         </div>

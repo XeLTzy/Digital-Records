@@ -215,7 +215,7 @@ button {
 .header_section {
     width: 100%;
     float: left;
-    background-color: #1769ba;
+    background-color: #3a3a88;
     height: auto;
     background-size: 100%;
 }
@@ -235,12 +235,12 @@ button {
 .navbar-light .navbar-nav .nav-link.active,
 .navbar-light .navbar-nav .nav-link.show,
 .navbar-light .navbar-nav .show>.nav-link {
-    color: #f76d37;
+    color: #66b2ff;
 }
 
 .navbar-light .navbar-nav .nav-link:focus,
 .navbar-light .navbar-nav .nav-link:hover {
-    color: #144272;
+    background-color: #8e8989;
 }
 
 .navbar {
@@ -268,9 +268,12 @@ button {
     float: left;
     background-image: url(../images/dental.jpg);
     height: auto;
-    background-size: cover;
-    padding: 5px 0px 25px 0px;
-    background-repeat: no-repeat;
+    background-position: center;
+    height: 400px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .banner_taital {
@@ -291,7 +294,7 @@ button {
     width: 100%;
     float: left;
     font-size: 45px;
-    color: #fdfcfa;
+    color: #202020;
     font-weight: bold;
     padding-bottom: 0px;
 }
@@ -313,7 +316,7 @@ button {
     width: 100%;
     float: left;
     padding-right: 0;
-    background-color: #252525;
+    background-color: #3a3a88;
     color: #fff;
     text-align: center;
     margin-right: 12px;
@@ -324,7 +327,7 @@ button {
 }
 
 .learnmore_bt a:hover {
-    background-color: #f76d37;
+    background-color: #66b2ff;
     color: #fff;
 }
 
@@ -380,7 +383,7 @@ button {
     width: 100%;
     float: left;
     font-size: 18px;
-    background-color: #252525;
+    background-color: #3a3a88;
     color: #ffffff;
     text-align: center;
     padding: 8px;
@@ -388,8 +391,10 @@ button {
 
 .read_bt a:hover {
     color: #ffffff;
-    background-color: #f76d37;
+    background-color: #66b2ff;
 }
+
+
 
 /* about section end */
 
@@ -481,6 +486,7 @@ a:hover {
     color: black;
     font-weight: bold;
     text-align: center;
+    margin-top: 25px;
 }
 
 .services_text {
@@ -525,9 +531,13 @@ a:hover {
 
 .box_main {
     width: 100%;
-    background-color: #f76d37;
+    height: 400px;
+    background-color: rgb(113, 113, 209);
     padding: 40px 30px;
     box-shadow: 0px 0px 18px -6px;
+    margin: 0 auto;
+    padding: 20px;
+    margin-top: 50px;
 }
 
 .box_main:hover .decorate_text {
@@ -590,11 +600,11 @@ a:hover {
     padding: 8px;
     text-transform: uppercase;
 }
-
+/* 
 .readmore_bt a:hover {
     color: #ffffff;
     background-color: #f76d37;
-}
+} */
 
 /* services section end */
 
@@ -700,7 +710,7 @@ a:hover {
 
 /* contact section start */
 
-.contact_section {
+/* .contact_section {
     width: 100%;
     float: left;
 }
@@ -729,7 +739,7 @@ a:hover {
 .mail_section {
     width: 100%;
     float: left;
-    /* background-image: url(../images/img-9.png); */
+    background-image: url(../images/img-9.png);
     height: auto;
     padding: 23px 70px;
     background-repeat: no-repeat;
@@ -802,7 +812,7 @@ a:hover {
 
 .padding_0 {
     padding: 0px;
-}
+} */
 
 /* contact section end */
 
@@ -816,12 +826,19 @@ a:hover {
     padding: 95px 0px;
 }
 
+.locasiyon{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
 .useful_text {
     width: 100%;
-    font-size: 24px;
+    font-size: 30px;
     color: #ffffff;
     margin-bottom: 15px;
     font-weight: bold;
+    text-align: center;
 }
 
 .footer_text {
@@ -858,9 +875,10 @@ a:hover {
 .dummy_text {
     width: 100%;
     float: left;
-    font-size: 14px;
+    font-size: 18px;
     color: #ffffff;
     margin: 0px;
+    text-align: center;
 }
 
 .location_text {
@@ -874,9 +892,10 @@ a:hover {
 }
 
 .location_text li {
-    font-size: 14px;
+    font-size: 18px;
     color: #ffffff;
     padding: 0px 0px 5px 0px;
+    text-align: center;
 }
 
 .location_text li a {
