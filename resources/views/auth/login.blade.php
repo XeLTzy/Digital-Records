@@ -1,47 +1,58 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+<!DOCTYPE html>
+<html lang="en">
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+    <link rel="stylesheet" href="{{ asset('frameworks/bootstrap-5.3.3/dist/css/bootstrap.min.css') }}">
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/sign-in/">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+
+</head>
+
+<body>
+
+    <main class="form-signin w-100 mx-auto alignt-items-center p-5">
+
+        <div class="d-flex flex-column alignt-items-center mx-auto mb-3">
+            <div class="p-2 mx-auto">
+                <img class="d-flex justify-content-center mx-auto" style="height: 80px;" src="{{ asset('assets\images\logo-v5.png') }}">
+                <h1 class="h3 mb-3 fw-normal">Welcome back</h1>
+            </div>
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
+                <div class="p-2 w-25  mx-auto">
+                    <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="exampleFormControlInput1" name="email" required>
+                </div>
+                <div class="p-2 w-25 mx-auto">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="exampleFormControlInput1" name="password" required>
+                </div>
+                <div class="p-2 w-25 mx-auto">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="remember">
+                    <label class="form-check-label" for="flexCheckDefault" name="remember">
+                        Remember me
+                    </label>
+
+                </div>
+                <div class="p-2 w-25 mx-auto">
+                    <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
+                </div>
+                <div class="p-2 w-25 d-flex justify-content-end mx-auto">
+                    <p><a class="link-opacity-100" href="{{ route('password.request') }}">Forgot passowrd?</a></p>
+                </div>
+            </form>
+
         </div>
+    </main>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                type="password"
-                name="password"
-                required autocomplete="current-password" />
+    <script src="{{ asset('frameworks/bootstrap-5.3.3/dist/js/bootstrap.bundle.min.js') }}"></script>
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
+</body>
 
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" name="remember">
-                <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
-            </label>
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-            <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
-                {{ __('Forgot your password?') }}
-            </a>
-            @endif
-
-            <x-primary-button class="ms-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+</html>

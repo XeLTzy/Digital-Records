@@ -32,7 +32,8 @@ Route::get('/', function () {
 // });
 
 // Ensure middleware applies to the appropriate routes
-Route::middleware(['auth', 'twofactor'])->group(function () {
+// Add this to for email authentication , 'twofactor'
+Route::middleware(['auth'])->group(function () {
     Route::get('/client_dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
@@ -48,13 +49,4 @@ Route::middleware('auth')->group(function () {
     Route::post('/two-factor/verify', [TwoFactorController::class, 'verify'])->name('two-factor.verify');
 });
 
-// Route::middleware(['auth', 'role:client'])->group(function () {
-//     Route::get('/dashboard', function () {
-//         return view('dashboard');
-//     })->name('dashboard');
-
-//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-// });
 require __DIR__ . '/auth.php';

@@ -22,7 +22,6 @@ class TwoFactorController extends Controller
         });
 
         return view('auth.two-factor');
-
     }
 
     public function verify(Request $request)
@@ -36,9 +35,11 @@ class TwoFactorController extends Controller
 
         if ($request->code == $user->two_factor_code) {
             session(['two_factor_authenticated' => true]);
-            return redirect()->intended('/dashboard');
+            return redirect()->intended('/client_dashboard');
         }
 
-        return redirect()->route('/two-factor.index')->withErrors(['code' => 'Code is incorrect']);
+        // return redirect()->route('/two-factor.index')->withErrors(['code' => 'Code is incorrect']);
+        // Redirect using the correct route name
+        return redirect()->route('two-factor.index')->withErrors(['code' => 'Code is incorrect']);
     }
 }
