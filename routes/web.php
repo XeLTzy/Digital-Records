@@ -49,4 +49,33 @@ Route::middleware('auth')->group(function () {
     Route::post('/two-factor/verify', [TwoFactorController::class, 'verify'])->name('two-factor.verify');
 });
 
+Route::get('/home', function () {
+    return view('client');
+})->name('home');
+
+Route::get('/consultation', function () {
+    return view('layouts.consultation');
+})->name('consultation');
+
+Route::get('/restorative', function () {
+    return view('layouts.restorative');
+})->name('restorative');
+
+Route::get('/endodontics', function () {
+    return view('layouts.endodontics');
+})->name('endodontics');
+
+Route::get('/cosmetic', function () {
+    return view('layouts.cosmetic');
+})->name('cosmetic');
+
+Route::get('/surgery', function () {
+    return view('layouts.surgery');
+})->name('surgery');
+
+Route::get('/orthodontic', function () {
+    return view('layouts.orthodontic');
+})->name('orthodontic');
+
+
 require __DIR__ . '/auth.php';

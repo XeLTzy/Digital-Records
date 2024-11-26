@@ -11,13 +11,21 @@
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         <!-- <a class="nav-link" href="index.html">Home</a> -->
-                        <a class="nav-link" aria-current="page" href="#">Home</a>
+                        <a class="nav-link" aria-current="page" href="{{ route('home') }}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#serbisis">Services</a>
+                        <a class="nav-link">Services</a>
+                        <div class="dropdown-content">
+                            <a href="{{ route('consultation') }}">Consultation</a>
+                            <a href="{{ route('restorative') }}">Restorative Dentistry</a>
+                            <a href="{{ route('endodontics') }}">Endodontics Treatment</a>
+                            <a href="{{ route('cosmetic') }}">Cosmetic Dentistry</a>
+                            <a href="{{ route('surgery') }}">Oral Surgery</a>
+                            <a href="{{ route('orthodontic') }}">Orthodontic Treatment</a>
+                        </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#abawtass">About Us</a>
+                        <a class="nav-link" href="#abawtas">About Us</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">Log In</a>
