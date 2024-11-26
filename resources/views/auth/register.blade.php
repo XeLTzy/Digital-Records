@@ -148,7 +148,7 @@
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="terms_checkbox" required>
                                         <label class="form-check-label" for="terms_checkbox">
-                                            I agree to the <a href="#" id="terms-link">Terms and Conditions</a>
+                                            I agree to the <a href="#" id="terms-link">Terms and Conditions.</a>
                                         </label>
                                     @error('terms_checkbox')
                                     <div class="invalid-feedback">{{ $message }}</div>
