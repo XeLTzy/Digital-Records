@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('health_status', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('booking_id')->constrained('booking')->cascadeOnUpdate()->cascadeOnDelete()->nullable(); // Other columns...
+            $table->foreignId('booking_id')->nullable()->constrained('booking')->cascadeOnUpdate()->cascadeOnDelete(); // Other columns...
             $table->boolean('Cough')->default(false)->nullable(); // nullable
             $table->boolean('Sipon')->default(false)->nullable(); // nullable
             $table->boolean('Fever')->default(false)->nullable(); // nullable

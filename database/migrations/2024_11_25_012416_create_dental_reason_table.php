@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('dental_reason', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('booking_id')->constrained('booking')->cascadeOnUpdate()->cascadeOnDelete()->nullable(); // Other columns...
+            $table->foreignId('booking_id')->nullable()->constrained('booking')->cascadeOnUpdate()->cascadeOnDelete(); // Other columns...
             $table->string('reason')->nullable();
             $table->string('medication')->nullable();
             $table->date('DamageStarted')->nullable();

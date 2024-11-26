@@ -1,0 +1,1 @@
+<img class="d-flex justify-content-center mx-auto" style="height: 45px;" src="{{ asset('assets\images\logo-v5.png') }}">
