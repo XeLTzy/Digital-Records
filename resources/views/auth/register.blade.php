@@ -28,6 +28,18 @@
             cursor: pointer;
         }
 
+        img{
+            display: block;
+            margin: 0 auto; /* Center horizontally */
+            margin-top: 80px; /* Add space from the top if needed */
+            max-width: 100%; /* Ensure responsiveness */
+            height: 220px; /* Maintain aspect ratio */
+            width: 310px;
+        }
+
+        body {
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -40,7 +52,7 @@
                 <div class="container-fluid mt-5">
                     <div class="row">
                         <div class="mx-auto">
-                            <img class="d-flex justify-content-center mx-auto" style="height: 80px;" src="{{ asset('assets\images\logo-v5.png') }}">
+                            <img class="d-flex justify-content-center mx-auto" style="height: 220px; width:310px; margin-bottom: 90px;" src="{{ asset('assets\images\dental-logo-large.jpg')}}">
                         </div>
                         <div class="col-xl-3 mb-2 has-validation">
                             <label for="firstname" class="form-label">First Name *</label>

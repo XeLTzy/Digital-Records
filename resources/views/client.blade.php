@@ -149,7 +149,7 @@
                             <img src="{{ asset('assets\images\dental-surgery.png') }}" class="image_1">
                             <img src="{{ asset('assets\images\dental-surgery.png') }}" class="image_2">
                         </div>
-                        <h3 class="decorate_text">Surgery</h3>
+                        <h3 class="decorate_text">Oral Surgery</h3>
                         <ul>
                             <li class="tation_text" data-bs-toggle="tooltip">
                                 Need oral surgery? Our team of experts uses state-of-the-art technology, including 3D scans, to plan and perform procedures with precision and care.
