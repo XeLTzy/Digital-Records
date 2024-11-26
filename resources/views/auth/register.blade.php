@@ -66,7 +66,7 @@
                         </div>
                     </div>
                     <div class="row mb-2">
-                        <div class="col-md-3">
+                        <!-- <div class="col-md-3">
                             <label for="number" class="form-label">Contact Number</label>
                             <input type="text" class="form-control" id="number" name="number" required>
                             <div class="valid-feedback">
@@ -75,7 +75,7 @@
                             @error('number')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
-                        </div>
+                        </div> -->
                         <!-- <div class="col-md-3 mt-4 form-check form-inline"> <label class="form-label">Gender</label>
                             <div> <input type="radio" id="gender_male" name="gender" value="Male" required> <label for="gender_male">Male</label> </div>
                             <div> <input type="radio" id="gender_female" name="gender" value="Female" required> <label for="gender_female">Female</label> </div>

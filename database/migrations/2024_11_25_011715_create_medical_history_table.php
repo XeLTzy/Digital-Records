@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('medical_history', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('booking_id')->constrained('booking')->cascadeOnUpdate()->cascadeOnDelete()->nullable(); // Other columns...
+            $table->foreignId('booking_id')->nullable()->constrained('booking')->cascadeOnUpdate()->cascadeOnDelete(); // Other columns...
             $table->boolean('heart_disease')->default(false)->nullable(); // nullable
             $table->string('heart_disease_reason')->nullable(); // nullable
             $table->boolean('high_blood')->default(false)->nullable(); // nullable

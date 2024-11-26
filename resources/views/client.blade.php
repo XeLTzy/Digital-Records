@@ -272,7 +272,7 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="about_img" style="margin-top: 75px;"><img src="images/dental-logo-large.jpg"></div>
+                <div class="about_img" style="margin-top: 75px;"><img src="{{ asset('assets\images\dental-logo-large.jpg') }}"></div>
             </div>
         </div>
     </div>
