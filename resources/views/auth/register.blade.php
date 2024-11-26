@@ -11,6 +11,24 @@
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/sign-in/">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+
+    <style>
+        #terms-container {
+            display: none;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+        }
+
+        #close-terms {
+            display: block;
+            margin: 10px 0;
+            color: red;
+            cursor: pointer;
+        }
+
+    </style>
 </head>
 
 <body>
@@ -25,7 +43,7 @@
                             <img class="d-flex justify-content-center mx-auto" style="height: 80px;" src="{{ asset('assets\images\logo-v5.png') }}">
                         </div>
                         <div class="col-xl-3 mb-2 has-validation">
-                            <label for="firstname" class="form-label">First Name</label>
+                            <label for="firstname" class="form-label">First Name *</label>
                             <input type="text" class="form-control" id="firstname" name="firstname" required>
                             <div class="valid-feedback">
                                 Looks good
@@ -45,7 +63,7 @@
                             @enderror
                         </div>
                         <div class="col-xl-3 mb-2">
-                            <label for="lastname" class="form-label">Last Name</label>
+                            <label for="lastname" class="form-label">Last Name *</label>
                             <input type="text" class="form-control" id="lastname" name="lastname" required>
                             <div class="valid-feedback">
                                 Looks good
@@ -67,7 +85,7 @@
                     </div>
                     <div class="row mb-2">
                         <div class="col-md-3">
-                            <label for="number" class="form-label">Contact Number</label>
+                            <label for="number" class="form-label">Contact Number *</label>
                             <input type="text" class="form-control" id="number" name="number" required>
                             <div class="valid-feedback">
                                 Looks good
@@ -84,7 +102,7 @@
                             <div class="valid-feedback"> Looks good </div> @error('gender') <div class="invalid-feedback">{{ $message }}</div> @enderror
                         </div> -->
                         <div class="col-md-3">
-                            <label for="birthday" class="form-label">Birthday</label>
+                            <label for="birthday" class="form-label">Birthday *</label>
                             <input type="date" class="form-control" id="birthday" name="birthday" required>
                             <div class="valid-feedback">
                                 Looks good
@@ -94,7 +112,7 @@
                             @enderror
                         </div>
                         <div class="col-md-3">
-                            <label for="email" class="form-label">Email</label>
+                            <label for="email" class="form-label">Email *</label>
                             <input type="email" class="form-control" id="email" name="email" required>
                             <div class="valid-feedback">
                                 Looks good
@@ -104,7 +122,7 @@
                             @enderror
                         </div>
                         <div class="col-md-3">
-                            <label for="password" class="form-label">Password</label>
+                            <label for="password" class="form-label">Password *</label>
                             <input type="password" class="form-control" id="password" name="password" required>
                             <div class="valid-feedback">
                                 Looks good
@@ -114,7 +132,7 @@
                             @enderror
                         </div>
                         <div class="col-md-3">
-                            <label for="password_confirmation" class="form-label">Confirm Password</label>
+                            <label for="password_confirmation" class="form-label">Confirm Password *</label>
                             <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required>
                             <div class="valid-feedback">
                                 Looks good
@@ -122,8 +140,28 @@
                             @error('password_confirmation')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
+                            </div>
                         </div>
-                    </div>
+                        
+                        <div class="row mt-3">
+                            <div class="col-md-3 mx-auto">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="terms_checkbox" required>
+                                        <label class="form-check-label" for="terms_checkbox">
+                                            I agree to the <a href="#" id="terms-link">Terms and Conditions</a>
+                                        </label>
+                                    @error('terms_checkbox')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="terms-container">
+                            <p>By signing up for an account on Dentista Royale D.W.'s website, you agree to provide accurate information, keep your account details secure, and use the website for lawful purposes. You consent to the collection of your personal and medical data, which we protect in compliance with privacy laws. Payment may be required for some services. You agree to our appointment policies and understand the website is for informational purposes only.</p>
+                            <span id="close-terms">Close</span>
+                        </div>
+
                     <div class="row mt-5">
                         <div class="col-md-3 mx-auto">
                             <button class="btn btn-primary w-100 py-2" type="submit">Sign Up</button>
@@ -131,6 +169,8 @@
                     </div>
                 </div>
             </form>
+
+            
 
         </div>
         <!-- <div class="d-flex flex-column alignt-items-center mx-auto mb-3">
@@ -198,7 +238,27 @@
 
     </main>
 
+    <script>
+        // Get references to elements
+        const termsLink = document.getElementById('terms-link');
+        const termsContainer = document.getElementById('terms-container');
+        const closeTerms = document.getElementById('close-terms');
+
+        // Show the terms when the link is clicked
+        termsLink.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent the default link behavior
+            termsContainer.style.display = 'block'; // Show the terms container
+        });
+
+        // Hide the terms when the close button is clicked
+        closeTerms.addEventListener('click', function() {
+            termsContainer.style.display = 'none'; // Hide the terms container
+        });
+    </script>
+
     <script src="{{ asset('frameworks/bootstrap-5.3.3/dist/js/bootstrap.bundle.min.js') }}"></script>
+
+    
 
 </body>
 

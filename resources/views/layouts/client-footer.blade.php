@@ -1,4 +1,4 @@
-<div class="footer_section layout_padding" id="abawtas">
+<div class="footer_section layout_padding" id="contacts">
         <div class="container">
             <div class="row d-flex justify-content-between">
                 <div class="col-lg-3 col-sm-6 mx-auto">
