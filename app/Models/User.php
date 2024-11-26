@@ -4,10 +4,13 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -21,13 +24,6 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'firstname',
-        'middlename',
-        'lastname',
-        'suffix',
-        'number',
-        'gender',
-        'birthday',
         'email',
         'password',
         'role'
@@ -35,6 +31,11 @@ class User extends Authenticatable
 
     public const ROLE_ADMIN = 'admin';
     public const ROLE_CLIENT = 'client';
+
+    public function patient(): HasOne
+    {
+        return $this->hasOne(Patient::class,'user_id');
+    }
 
     public function isAdmin()
     {
@@ -67,5 +68,10 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function scopeClients($query)
+    {
+        return $query->where('role', self::ROLE_CLIENT);
     }
 }

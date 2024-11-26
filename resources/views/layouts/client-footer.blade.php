@@ -6,8 +6,8 @@
                     <div class="locasiyon">
                         <iframe
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3858.063827781006!2d120.99064597510947!3d14.76543408574074!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b1f9f38671f1%3A0xcd451d6b083fe9d8!2sEMA%20Town%20Center!5e0!3m2!1sen!2sph!4v1726650067987!5m2!1sen!2sph"
-                        width="450"
-                        height="450"
+                        width="300"
+                        height="300"
                         style="border:0;"
                         allowfullscreen=""
                         loading="lazy"

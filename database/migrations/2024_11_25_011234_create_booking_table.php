@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('booking', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable()->constrained('users');
+            $table->foreignId('patient_id')->nullable()->constrained('patients');
             $table->string('status')->default('Pending')->nullable();
             $table->date('date')->nullable();
             $table->string('start_time')->nullable();
