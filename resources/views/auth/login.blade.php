@@ -43,7 +43,7 @@
                     <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
                 </div>
                 <div class="p-2 w-25 d-flex justify-content-end mx-auto">
-                    <p><a class="link-opacity-100" href="{{ route('password.request') }}">Forgot passowrd?</a></p>
+                    <p><a class="link-opacity-100" href="{{ route('password.request') }}">Forgot password?</a></p>
                 </div>
                 <div>
                     <p class="text-center w-100">
