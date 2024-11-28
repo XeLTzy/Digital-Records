@@ -1,10 +1,13 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PatientController;
 use App\Mail\AcceptedMail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TwoFactorController;
+use App\Http\Controllers\RecordController;
 
 Route::get('/', function () {
     return view('client');
@@ -13,9 +16,7 @@ Route::get('/', function () {
 // Ensure middleware applies to the appropriate routes
 // Add this to for email authentication , 'twofactor'
 Route::middleware(['auth'])->group(function () {
-    Route::get('/client_dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/client_dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -56,5 +57,16 @@ Route::get('/orthodontic', function () {
     return view('layouts.orthodontic');
 })->name('orthodontic');
 
+Route::get('/appointment', function () {
+    return view('appointment');
+})->name('appointment');
+
+Route::get('/form', function () {
+    return view('form');
+})->name('form');   
+
+Route::post('/record', [RecordController::class, 'create']);
+
+Route::post('/submit-dental-form', [PatientController::class, 'store']);
 
 require __DIR__ . '/auth.php';

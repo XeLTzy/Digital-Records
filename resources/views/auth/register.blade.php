@@ -54,9 +54,12 @@
                         <div class="mx-auto">
                             <img class="d-flex justify-content-center mx-auto" style="height: 220px; width:310px; margin-bottom: 90px;" src="{{ asset('assets\images\dental-logo-large.jpg')}}">
                         </div>
+                            @if(Session('error'))
+                                <div class="alert alert-danger">{{ Session('error') }}</div>
+                            @endif
                         <div class="col-xl-3 mb-2 has-validation">
                             <label for="firstname" class="form-label">First Name *</label>
-                            <input type="text" class="form-control" id="firstname" name="firstname" required>
+                            <input type="text" class="form-control" id="firstname" name="firstname" value="{{ old('firstname') }}" required>
                             <div class="valid-feedback">
                                 Looks good
                             </div>
@@ -65,8 +68,8 @@
                             @enderror
                         </div>
                         <div class="col-xl-3 mb-2">
-                            <label for="middlename" class="form-label">Middle Name</label>
-                            <input type="text" class="form-control" id="middlename" name="middlename">
+                            <label for="middlename" class="form-label">Middle Name *</label>
+                            <input type="text" class="form-control" id="middlename" name="middlename" value="{{ old('middlename') }}" required>
                             <div class="valid-feedback">
                                 Looks good
                             </div>
@@ -76,7 +79,7 @@
                         </div>
                         <div class="col-xl-3 mb-2">
                             <label for="lastname" class="form-label">Last Name *</label>
-                            <input type="text" class="form-control" id="lastname" name="lastname" required>
+                            <input type="text" class="form-control" id="lastname" name="lastname" value="{{ old('lastname') }}" required>
                             <div class="valid-feedback">
                                 Looks good
                             </div>
@@ -86,7 +89,7 @@
                         </div>
                         <div class="col-xl-3 mb-2">
                             <label for="suffix" class="form-label">Suffix</label>
-                            <input type="text" class="form-control" id="suffix" name="suffix">
+                            <input type="text" class="form-control" id="suffix" name="suffix" value="{{ old('suffix') }}">
                             <div class="valid-feedback">
                                 Looks good
                             </div>
@@ -98,7 +101,7 @@
                     <div class="row mb-2">
                         <div class="col-md-3">
                             <label for="number" class="form-label">Contact Number *</label>
-                            <input type="text" class="form-control" id="number" name="number" required>
+                            <input type="text" class="form-control" id="number" name="number"  value="{{ old('number') }}" required>
                             <div class="valid-feedback">
                                 Looks good
                             </div>
@@ -115,7 +118,7 @@
                         </div> -->
                         <div class="col-md-3">
                             <label for="birthday" class="form-label">Birthday *</label>
-                            <input type="date" class="form-control" id="birthday" name="birthday" required>
+                            <input type="date" class="form-control" id="birthday" name="birthday" value="{{ old('birthday') }}" required>
                             <div class="valid-feedback">
                                 Looks good
                             </div>
@@ -125,7 +128,7 @@
                         </div>
                         <div class="col-md-3">
                             <label for="email" class="form-label">Email *</label>
-                            <input type="email" class="form-control" id="email" name="email" required>
+                            <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" required>
                             <div class="valid-feedback">
                                 Looks good
                             </div>
@@ -269,7 +272,11 @@
     </script>
 
     <script src="{{ asset('frameworks/bootstrap-5.3.3/dist/js/bootstrap.bundle.min.js') }}"></script>
-
+    <style>
+        .invalid-feedback {
+            display: inline !important;
+        }
+    </style>
     
 
 </body>

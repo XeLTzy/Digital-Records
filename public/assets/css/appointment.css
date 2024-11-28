@@ -1,0 +1,104 @@
+
+#terms-container {
+    display: none;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+}
+
+#close-terms {
+    display: block;
+    margin: 10px 0;
+    color: red;
+    cursor: pointer;
+}
+
+
+#BookingForm {
+    max-width: 500px; /* Limit the width of the form */
+    margin: 0 auto; /* Center the form horizontally */
+    padding: 20px; /* Add padding inside the form */
+    background-color: #f9f9f9; /* Light background color */
+    border: 1px solid #ddd; /* Subtle border */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Label Styles */
+#BookingForm .form-label {
+    font-weight: bold; /* Emphasize the labels */
+    margin-bottom: 8px; /* Add spacing below the labels */
+    display: block; /* Ensure labels occupy their own line */
+    color: #333; /* Dark text for labels */
+}
+
+/* Input Field Styles */
+#BookingForm .form-control,
+#BookingForm .form-select {
+    width: 100%; /* Full-width inputs */
+    padding: 10px; /* Add inner spacing */
+    border: 1px solid #ccc; /* Subtle border for inputs */
+    border-radius: 4px; /* Slightly rounded inputs */
+    font-size: 16px; /* Comfortable font size */
+    color: #555; /* Neutral text color */
+}
+
+/* Input Field Hover and Focus Effects */
+#BookingForm .form-control:focus,
+#BookingForm .form-select:focus {
+    border-color: #007bff; /* Highlighted border on focus */
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.3); /* Subtle blue glow */
+    outline: none; /* Remove default focus outline */
+}
+
+/* Button Styles */
+#BookingForm .btn-primary {
+    background-color: #007bff; /* Primary blue color */
+    border: none; /* Remove button border */
+    color: #fff; /* White text */
+    font-size: 16px; /* Comfortable font size */
+    padding: 10px; /* Add inner spacing */
+    border-radius: 4px; /* Rounded button */
+    cursor: pointer; /* Pointer cursor for buttons */
+    transition: background-color 0.3s; /* Smooth hover transition */
+}
+
+#BookingForm .btn-primary:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+#BookingForm .btn-primary:disabled {
+    background-color: #ccc; /* Gray background for disabled state */
+    cursor: not-allowed; /* Not-allowed cursor for disabled button */
+}
+
+/* Validation Feedback */
+#BookingForm .valid-feedback,
+#BookingForm .invalid-feedback {
+    font-size: 14px; /* Smaller font size for feedback */
+    margin-top: 4px; /* Spacing above the feedback message */
+    display: block; /* Ensure feedback occupies its own line */
+}
+
+#BookingForm .invalid-feedback {
+    color: #dc3545; /* Red color for error messages */
+}
+
+#BookingForm .valid-feedback {
+    color: #28a745; /* Green color for success messages */
+}
+
+/* Spacing Between Fields */
+#BookingForm .mb-3 {
+    margin-bottom: 20px; /* Add spacing between form fields */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 576px) {
+    #BookingForm {
+        padding: 15px; /* Reduce padding on smaller screens */
+        box-shadow: none; /* Remove shadow for a flatter look */
+        border: none; /* Remove border for a cleaner look */
+    }
+}
