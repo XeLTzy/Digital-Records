@@ -47,4 +47,21 @@ class CreateBooking extends CreateRecord
             }
         }
     }
+
+    protected function mutateFormDataBeforeSave(array $data): array
+    {
+        $availServices = $data['availServices'] ?? [];
+        unset($data['availServices']); // Prevents trying to save this as an attribute
+        $this->record->availServices()->delete(); // Clear old services
+
+        foreach ($availServices as $serviceId) {
+            $this->record->availServices()->create([
+                'service_id' => $serviceId,
+                'date' => $this->record->date,
+                'time' => $this->record->start_time,
+            ]);
+        }
+
+        return $data;
+    }
 }

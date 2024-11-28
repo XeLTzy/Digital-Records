@@ -155,27 +155,27 @@
                             @error('password_confirmation')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
-                            </div>
                         </div>
-                        
-                        <div class="row mt-3">
-                            <div class="col-md-3 mx-auto">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="terms_checkbox" required>
-                                        <label class="form-check-label" for="terms_checkbox">
-                                            I agree to the <a href="#" id="terms-link">Terms and Conditions.</a>
-                                        </label>
-                                    @error('terms_checkbox')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div>
-                        </div>
+                    </div>
 
-                        <div id="terms-container">
-                            <p>By signing up for an account on Dentista Royale D.W.'s website, you agree to provide accurate information, keep your account details secure, and use the website for lawful purposes. You consent to the collection of your personal and medical data, which we protect in compliance with privacy laws. Payment may be required for some services. You agree to our appointment policies and understand the website is for informational purposes only.</p>
-                            <span id="close-terms">Close</span>
+                    <div class="row mt-3">
+                        <div class="col-md-3 mx-auto">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="terms_checkbox" required>
+                                <label class="form-check-label" for="terms_checkbox">
+                                    I agree to the <a href="#" id="terms-link">Terms and Conditions.</a>
+                                </label>
+                                @error('terms_checkbox')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
                         </div>
+                    </div>
+
+                    <div id="terms-container">
+                        <p>By signing up for an account on Dentista Royale D.W.'s website, you agree to provide accurate information, keep your account details secure, and use the website for lawful purposes. You consent to the collection of your personal and medical data, which we protect in compliance with privacy laws. Payment may be required for some services. You agree to our appointment policies and understand the website is for informational purposes only.</p>
+                        <span id="close-terms">Close</span>
+                    </div>
 
                     <div class="row mt-5">
                         <div class="col-md-3 mx-auto">
@@ -185,7 +185,7 @@
                 </div>
             </form>
 
-            
+
 
         </div>
         <!-- <div class="d-flex flex-column alignt-items-center mx-auto mb-3">
@@ -272,11 +272,7 @@
     </script>
 
     <script src="{{ asset('frameworks/bootstrap-5.3.3/dist/js/bootstrap.bundle.min.js') }}"></script>
-    <style>
-        .invalid-feedback {
-            display: inline !important;
-        }
-    </style>
+
     
 
 </body>
