@@ -10,9 +10,15 @@ use Filament\Tables\Table;
 use Filament\Resources\Resource;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\ActionGroup;
+use pxlrbt\FilamentExcel\Columns\Column;
+use App\Filament\Exports\ProductExporter;
+use Filament\Forms\Components\DatePicker;
 use Illuminate\Database\Eloquent\Builder;
+use pxlrbt\FilamentExcel\Exports\ExcelExport;
 use App\Filament\Resources\ServicesResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use pxlrbt\FilamentExcel\Actions\Tables\ExportAction;
+use pxlrbt\FilamentExcel\Actions\Tables\ExportBulkAction;
 use App\Filament\Resources\ServicesResource\RelationManagers;
 
 class ServicesResource extends Resource
@@ -92,9 +98,49 @@ class ServicesResource extends Resource
                     ->button()
                     ->label('Actions')
             ])
+            ->headerActions([
+                // Action::make('Services List Avail')
+                //     ->form([
+                //         DatePicker::make('from')
+                //             ->label('From')
+                //             ->required(),
+                //         DatePicker::make('to')
+                //             ->label('To')
+                //             ->required(),
+                //     ])
+                //     ->label('Generate Report')
+                //     ->action(function (array $data) {
+                //         // Redirect to the PDF download route with the date range as query parameters
+                //         return redirect()->route('services.pdf.download', [
+                //             'from' => $data['from']->format('Y-m-d'),
+                //             'to' => $data['to']->format('Y-m-d'),
+                //         ]);
+                //     }),
+                // Action::make('updateAuthor')
+                //     ->form([
+                //         DatePicker::make('created_at')
+                //             ->label('From')
+                //             ->required(),
+                //             DatePicker::make('created_at')
+                //             ->label('To')
+                //             ->required(),
+                //     ])
+                //     ->label('Report')
+                // })
+                // Tables\Actions\Action::make('pdf')
+                //     ->label('Download PDF')
+                //     ->color('success')
+                //     ->icon('heroicon-o-folder')
+                //     ->url(fn(Booking $record) => route('booking.pdf.download', ['order' => $record->id]))
+                //     ->openUrlInNewTab();
+            ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     // Tables\Actions\DeleteBulkAction::make(),
+                    ExportBulkAction::make()->exports([
+                        ExcelExport::make('table')->fromTable(),
+                        ExcelExport::make('form')->fromForm(),
+                    ])
                 ]),
             ]);
     }

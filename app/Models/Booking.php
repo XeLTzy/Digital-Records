@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Booking extends Model
 {
@@ -17,11 +18,6 @@ class Booking extends Model
 
     protected $table = 'booking';
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
     protected $fillable = [
         'patient_id',
         'status',
@@ -70,9 +66,15 @@ class Booking extends Model
         return $this->belongsTo(Patient::class);
     }
 
-    public function services(): HasMany
+    public function availServices(): HasMany
     {
-        return $this->hasMany(Services::class);
+        return $this->hasMany(AvailService::class, 'booking_id', 'id');
+    }
+
+    public function services(): BelongsToMany
+    {
+        return $this->belongsToMany(Services::class, 'avail_services', 'booking_id', 'service_id')
+            ->withPivot('date', 'time');
     }
 
     public function medicalHistory(): HasOne
