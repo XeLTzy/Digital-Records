@@ -3,6 +3,7 @@
 use App\Mail\AcceptedMail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PdfController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TwoFactorController;
 
@@ -27,6 +28,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/two-factor', [TwoFactorController::class, 'index'])->name('two-factor.index');
     Route::post('/two-factor/verify', [TwoFactorController::class, 'verify'])->name('two-factor.verify');
 });
+
+Route::get('/{order}/pdf', [PdfController::class, 'download'])->name('booking.pdf.download');
+// Route::get('/{order}/pdf', [PdfController::class, 'downloadservices'])->name('services.pdf.download');
+Route::get('/services/pdf', [PdfController::class, 'downloadServices'])->name('services.pdf.download');
 
 Route::get('/home', function () {
     return view('client');

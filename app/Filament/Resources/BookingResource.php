@@ -7,8 +7,10 @@ use Carbon\Carbon;
 use Filament\Forms;
 use Filament\Tables;
 use App\Models\Booking;
+use App\Models\Services;
 use Filament\Forms\Form;
 use App\Mail\AcceptedMail;
+use App\Mail\RejectedMail;
 use Filament\Tables\Table;
 use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
@@ -37,74 +39,6 @@ class BookingResource extends Resource
     protected static ?string $modelLabel = 'Schedule';
     protected static ?string $navigationIcon = 'heroicon-o-list-bullet';
 
-    // public static function form(Form $form): Form
-    // {
-    //     return $form
-    //         ->schema([
-    //             Section::make('Schedule')
-    //                 ->schema([
-    //                     Select::make('status')
-    //                         ->options([
-    //                             'Pending' => 'Pending',
-    //                             'Accepted' => 'Accepted',
-    //                             'Rejected' => 'Rejected',
-    //                         ])
-    //                         ->default('Accepted'),
-    //                     DatePicker::make('date')
-    //                         ->default(now()) // Sets the default value to the current date and time
-    //                         ->minDate(now()) // Restricts selection to today or earlier
-    //                         ->label('Select Date'),
-    //                     Select::make('start_time')
-    //                         ->options([
-    //                             '09:00 AM' => '9:00 AM',
-    //                             '09:30 AM' => '9:30 AM',
-    //                             '10:00 AM' => '10:00 AM',
-    //                             '10:30 AM' => '10:30 AM',
-    //                             '11:00 AM' => '11:00 AM',
-    //                             '11:30 AM' => '11:30 AM',
-    //                             '12:00 PM' => '12:00 PM',
-    //                             '12:30 PM' => '12:30 PM',
-    //                             '1:00 PM' => '1:00 PM',
-    //                             '1:30 PM' => '1:30 PM',
-    //                             '2:00 PM' => '2:00 PM',
-    //                             '2:30 PM' => '2:30 PM',
-    //                             '3:00 PM' => '3:00 PM',
-    //                             '3:30 PM' => '3:30 PM',
-    //                             '4:00 PM' => '4:00 PM',
-    //                             '4:30 PM' => '4:30 PM',
-    //                         ])
-    //                         ->label('Start time'),
-    //                 ])
-    //                 ->columns(4)
-    //                 ->collapsible()
-    //                 ->persistCollapsed(),
-    //             Section::make('Select Patient & Services Availed')
-    //                 ->schema([
-    //                     Group::make()
-    //                         ->schema([
-    //                             Select::make('patient_id')
-    //                                 ->relationship('patient', 'full_name')
-    //                                 ->searchable(['firstname', 'middlename', 'lastname', 'suffix'])
-    //                                 ->getOptionLabelFromRecordUsing(fn($record) => $record->full_name) // Use the full name accessor
-    //                                 ->required()
-    //                                 ->preload()
-    //                                 ->label('Patient option'),
-    //                         ]),
-    //                     Group::make()
-    //                         ->schema([
-    //                             Select::make('services_id')
-    //                                 ->relationship('services', 'name')
-    //                                 ->searchable(['category', 'name', 'description', 'price'])
-    //                                 ->multiple()
-    //                                 ->required()
-    //                                 ->preload()
-    //                                 ->label('Services option'),
-    //                         ]),
-    //                 ])
-    //                 ->columns(2),
-    //         ]);
-    // }
-
     public static function form(Form $form): Form
     {
         return $form
@@ -130,18 +64,19 @@ class BookingResource extends Resource
                                 '10:30 AM' => '10:30 AM',
                                 '11:00 AM' => '11:00 AM',
                                 '11:30 AM' => '11:30 AM',
-                                '12:00 AM' => '12:00 PM',
-                                '12:30 AM' => '12:30 PM',
-                                '1:00 AM' => '1:00 PM',
-                                '1:30 AM' => '1:30 PM',
-                                '2:00 AM' => '2:00 PM',
-                                '2:30 AM' => '2:30 PM',
-                                '3:00 AM' => '3:00 PM',
-                                '3:30 AM' => '3:30 PM',
-                                '4:00 AM' => '4:00 PM',
-                                '4:30 AM' => '4:30 PM',
+                                '12:00 PM' => '12:00 PM',
+                                '12:30 PM' => '12:30 PM',
+                                '1:00 PM' => '1:00 PM',
+                                '1:30 PM' => '1:30 PM',
+                                '2:00 PM' => '2:00 PM',
+                                '2:30 PM' => '2:30 PM',
+                                '3:00 PM' => '3:00 PM',
+                                '3:30 PM' => '3:30 PM',
+                                '4:00 PM' => '4:00 PM',
+                                '4:30 PM' => '4:30 PM',
                             ])
-                            ->label('Start time'),
+                            ->label('Start time')
+                            ->required(),
                     ])
                     ->columns(4)
                     ->collapsible()
@@ -160,19 +95,47 @@ class BookingResource extends Resource
                             ]),
                         Forms\Components\Group::make()
                             ->schema([
-                                Select::make('services_id')
-                                    ->relationship('services', 'name')
-                                    ->searchable(['category', 'name', 'description', 'price'])
+                                Select::make('availServices') // This sets the relationship to get service names
+                                    ->label('Select Service')
                                     ->multiple()
+                                    ->options(Services::all()->pluck('name', 'id'))
+                                    ->searchable()
                                     ->required()
-                                    ->preload()
-                                    ->label('Services option'),
+                                    ->afterStateUpdated(function (callable $get, callable $set) {
+                                        $services = $get('services');
+                                        $date = $get('date');
+                                        $time = $get('time');
+
+                                        if ($services) {
+                                            $booking = Booking::find($get('id'));
+                                            $booking->services()->sync($services, ['date' => $date, 'time' => $time]);
+                                        }
+                                    })
                             ]),
                     ])
                     ->columns(2),
             ])
             ->extraAttributes(['x-on:submit.prevent' => 'form.request()']);
     }
+
+    protected function afterSave(Booking $record): void
+    {
+        // Clear previous records
+        $record->availServices()->delete();
+
+        // Get the selected services (assumes 'services' input is an array of IDs)
+        $selectedServices = $this->data['services'] ?? [];
+
+        // Insert into the AvailService model
+        foreach ($selectedServices as $serviceId) {
+            $record->availServices()->create([
+                'service_id' => $serviceId,
+                'date' => now(), // Example, adjust as needed
+                'time' => now()->format('H:i:s'), // Example, adjust as needed
+            ]);
+        }
+    }
+
 
     protected function actions(): array
     {
@@ -225,9 +188,6 @@ class BookingResource extends Resource
                         'lastname',
                         'suffix',
                     ]),
-                TextColumn::make('patient.user.email')
-                    ->sortable()
-                // TextColumn::make('end_time')
 
             ])
             ->defaultSort('date', 'asce')
@@ -331,56 +291,6 @@ class BookingResource extends Resource
                                 ->success()
                                 ->send();
                         }),
-                    // Action::make('Accept')
-                    //     ->label('Accept')
-                    //     ->icon('heroicon-o-check-circle') // Optional icon
-                    //     ->color('success') // Optional color
-                    //     ->disabled(fn(Booking $record): bool => $record->status === 'Accepted') // Disable if already accepted
-                    //     ->action(function (Booking $record) {
-                    //         // Check if there are already two accepted bookings for the same date and time
-                    //         $countAccepted = Booking::where('date', $record->date)
-                    //             ->where('start_time', $record->start_time)
-                    //             ->where('status', 'Accepted')
-                    //             ->count();
-
-                    //         if ($countAccepted >= 2) {
-                    //             Notification::make()
-                    //                 ->title('Schedule Conflict!')
-                    //                 ->body('There are already two accepted bookings for this time slot.')
-                    //                 ->danger()
-                    //                 ->send();
-                    //             return;
-                    //         }
-
-                    //         // Update the booking status to 'Accepted'
-                    //         $record->status = 'Accepted';
-                    //         $record->save();
-
-                    //         // Send the email
-                    //         $patient = $record->patient;
-                    //         $data = [
-                    //             'firstname' => $patient->firstname,
-                    //             'middlename' => $patient->middlename,
-                    //             'lastname' => $patient->lastname,
-                    //             'suffix' => $patient->suffix,
-                    //             'date' => $record->date,
-                    //             'start_time' => $record->start_time,
-                    //         ];
-
-                    //         Mail::to($patient->user->email)->send(new AcceptedMail(
-                    //             $data['firstname'],
-                    //             $data['middlename'],
-                    //             $data['lastname'],
-                    //             $data['suffix'],
-                    //             $data['date'],
-                    //             $data['start_time']
-                    //         ));
-
-                    //         Notification::make()
-                    //             ->title('Schedule accepted successfully and email sent!')
-                    //             ->success()
-                    //             ->send();
-                    //     }),
 
                     Tables\Actions\Action::make('Rejected')
                         ->label('Reject')
@@ -392,6 +302,26 @@ class BookingResource extends Resource
                             $record->status = 'Rejected';
                             $record->save();
 
+                            // Send the email
+                            $patient = $record->patient;
+                            $data = [
+                                'firstname' => $patient->firstname,
+                                'middlename' => $patient->middlename,
+                                'lastname' => $patient->lastname,
+                                'suffix' => $patient->suffix,
+                                'date' => $record->date,
+                                'start_time' => $record->start_time,
+                            ];
+
+                            Mail::to($patient->user->email)->send(new RejectedMail(
+                                $data['firstname'],
+                                $data['middlename'],
+                                $data['lastname'],
+                                $data['suffix'],
+                                $data['date'],
+                                $data['start_time']
+                            ));
+
                             Notification::make()
                                 ->title('Schedule Rejected successfully!')
                                 ->success()
@@ -399,6 +329,12 @@ class BookingResource extends Resource
                         }),
                     Tables\Actions\ViewAction::make(),
                     Tables\Actions\EditAction::make(),
+                    Tables\Actions\Action::make('pdf')
+                        ->label('Download PDF')
+                        ->color('success')
+                        ->icon('heroicon-o-folder')
+                        ->url(fn(Booking $record) => route('booking.pdf.download', ['order' => $record->id]))
+                        ->openUrlInNewTab(),
                 ])
                     ->button()
                     ->label('Actions')
@@ -417,22 +353,26 @@ class BookingResource extends Resource
                 \Filament\Infolists\Components\Section::make('Schedule') // Use the correct Section class
                     ->schema([
                         TextEntry::make('status'),
-                        TextEntry::make('date'),
+                        TextEntry::make('date')
+                            ->date(),
                         TextEntry::make('start_time')
                             ->label('Time'),
                     ])
                     ->columns(3),
-                \Filament\Infolists\Components\Section::make('Patient') // Use the correct Section class
-                    ->relationship('patient')
+                \Filament\Infolists\Components\Section::make('Patient & Contact information & Avail Services list') // Use the correct Section class
                     ->schema([
-                        TextEntry::make('full_name')
-                            ->label('Full Name'),
-                        TextEntry::make('user.email')
-                            ->label('Email'),
-                        TextEntry::make('number')
-                            ->label('Contact Number')
+                        \Filament\Infolists\Components\Grid::make(3) // Use the correct Section class
+                            ->schema([
+                                TextEntry::make('patient.full_name')
+                                    ->label('Full Name'),
+                                TextEntry::make('patient.number')
+                                    ->label('Contact Number'),
+                                TextEntry::make('availServices.service.name')
+                                    ->label('Avail Service list')
+                            ])
+                            ->columnSpan(3),
                     ])
-                    ->columns(3),
+                    ->columns(1),
 
             ]);
     }

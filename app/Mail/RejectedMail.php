@@ -9,9 +9,8 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class AcceptedMail extends Mailable
+class RejectedMail extends Mailable
 {
-
     use Queueable, SerializesModels;
 
     public $firstname;
@@ -50,7 +49,7 @@ class AcceptedMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'mail.accepted',
+            view: 'mail.rejected',
         );
     }
 
