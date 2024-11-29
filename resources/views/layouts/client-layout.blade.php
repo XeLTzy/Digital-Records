@@ -501,7 +501,7 @@ a:hover {
     height: auto;
     width: 100%;
     float: left;
-    /* background-image: url(../images/family-portrait.jpg); */
+    background-image: url(../images/family-portrait.jpg);
     height: auto;
     background-attachment: fixed;
     background-size: cover;
