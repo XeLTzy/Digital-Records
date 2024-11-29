@@ -82,7 +82,7 @@ input[type="date"] {
     cursor: pointer; /* Pointer cursor for buttons */
     transition: background-color 0.3s; /* Smooth hover transition */
 }
-}
+
 
 button:hover {
     background-color: #45a049;
