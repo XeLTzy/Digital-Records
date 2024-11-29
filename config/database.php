@@ -86,7 +86,6 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
-            'url' => env('DB_URL'),
             'host' => isset($DATABASE_URL['host']) ? $DATABASE_URL['host'] : 'ce0lkuo944ch99.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com',
             'port' => isset($DATABASE_URL['port']) ? $DATABASE_URL['port'] : '5432',
             'database' => isset($DATABASE_URL['path']) ? ltrim($DATABASE_URL['path'], "/") : 'deuat7m5k1sg7j',
